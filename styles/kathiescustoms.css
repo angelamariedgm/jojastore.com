@@ -1,0 +1,460 @@
+@import url("https://fonts.googleapis.com/css?family=Sora&display=swap");
+
+:root {
+    font-size: 16px;
+    font-family: 'Sora', Arial, Helvetica, sans-serif;
+    --font__spacing: 1px;
+    --font__small: 0.9rem/17px;
+    --font__regular: 20px;
+    --font__medium: clamp(4.5rem, 6vw, 17rem);
+    --font__huge: clamp(5rem, 20vw, 50rem);
+
+    --ffamily__light: "Sora Light", Arial, Helvetica, sans-serif;
+    --ffamily__regular: "Sora Regular", Arial, Helvetica, sans-serif;
+    --ffamily__bold: "Sora Semibold", Arial, Helvetica, sans-serif;
+    --ffamily__huge: "Sora Bold", Arial, Helvetica, sans-serif;
+
+    --color__bright: rgba(176, 186, 175, 1);
+    --color__half: rgba(176, 186, 175, 0.5);
+    --color__light: rgba(155, 172, 194, 1);
+    --color__accent: rgba(255, 124, 31, 1);
+    --color__dark: rgba(14, 56, 84, 1);
+
+    --scroll-bar-color: #c5c5c5;
+    --scroll-bar-bg-color: #f6f6f6;
+
+    --margin__small: 5px;
+    --margin__medium: 40px;
+    --margin__big: 15vh;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scroll-bar-color) var(--scroll-bar-bg-color);
+}
+
+html, body {
+    height: 100vh;
+}
+
+::-webkit-scrollbar-corner {
+    background: rgba(0,0,0,0.5);
+}
+
+*::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--scroll-bar-bg-color);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-bar-color);
+    border-radius: 20px;
+    border: 3px solid var(--scroll-bar-bg-color);
+}
+
+img {
+    pointer-events: none;
+}
+
+.btn {
+    font: var(--font__small) var(--ffamily__bold);
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    margin: 25px;
+    position: relative;
+}
+
+/* ---Nav Bar--- */
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 45px 45px 0 45px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    mix-blend-mode: difference;
+    z-index: 10;
+    transition: var(--transition__medium);
+}
+
+nav ul li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+#nav-logo {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    color: var(--color__bright);
+    transition: var(--transition__fast);
+}
+
+#nav-logo:hover {
+    color: var(--color__half);    
+}
+
+#nav-links {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+#nav-links li {
+    display: inherit;
+    margin-right: 40px;
+}
+
+#nav-links li:last-of-type {
+    margin-right: 0;
+}
+
+#nav-links li a {
+    color: var(--color__bright);
+    font: var(--font__small) var(--ffamily__bold);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: var(--transition__fast);
+}
+
+#nav-links li a:hover {
+    color: var(--color__half);
+}
+
+/* ---Footer--- */
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 45px 45px 45px;
+    text-transform: uppercase;
+    mix-blend-mode: difference;
+    z-index: 10;
+}
+
+footer > div {
+    color: var(--color__bright);
+    font: var(--font__small) var(--ffamily__bold);
+    align-self: flex-end;
+}
+
+#credits {
+    text-decoration: none;
+}
+
+#nav-social {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+#nav-social li {
+    margin-right: 40px;
+}
+
+#nav-social li:last-of-type {
+    margin-right: 0;
+}
+
+#nav-social li a {
+    position: relative;
+    color: var(--color__bright);
+    font: var(--font__small) var(--ffamily__light);
+    text-decoration: none;
+    transition: var(--transition__fast);
+}
+
+#nav-social li a:hover::after {
+    opacity: 0.5;
+}
+
+#nav-social li a::after {
+    opacity: 0;
+    content: "";
+    position: absolute;
+    top: -1px;
+    right: -15px;
+    width: 13px;
+    height: 13px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 256 256'%3E%3Cpath fill='none' d='M0 0h256v256H0z'/%3E%3Cpath fill='none' stroke='%23b0baaf' stroke-linecap='round' stroke-linejoin='round' stroke-width='16' d='M64 192L192 64M88 64h104v104'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: var(--transition__fast);
+}
+
+#nav-social li a:hover {
+    color: var(--color__half);
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+section h1 {
+    font-family: var(--ffamily__bold);
+    font-size: var(--font__medium);
+}
+
+section p {
+    padding-top: 15px;
+    font-size: var(--font__regular);
+}
+
+/* ---Landing--- */
+#landing {
+    height: 100vh;
+    background: url("../images/shopping-bag.jpg") no-repeat center center/cover;
+
+    text-align: center;
+    padding: 0 20px;
+}
+
+#landing .btn {
+    color: white;
+    border: white 1px solid;
+}
+
+#landing .btn:hover {
+    background: white;
+    color: var(--color__light);
+}
+
+/* ---About--- */
+#about {
+    height: 100vh;
+    background: url("../images/parker-burchfield.jpg") no-repeat center center/cover;
+}
+
+#about .about-text {
+    position: absolute;
+    padding: 25px;
+    left: 40px;
+    bottom: 80px;
+    
+    background-color: rgba(255, 255, 255, .15);  
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    #about .about-text {
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+}
+
+#about .btn {
+    color: black;
+    border: black 1px solid;
+}
+
+/* ===Etsy Reviews=== */
+#reviews {
+    height: 100vh;
+    position: relative;
+    padding-top: 40px;
+    background: white;
+}
+
+/* ---Contact--- */
+#contact {
+    height: 100vh;
+    background: url("../images/volodymyr-hryshchenko.jpg") no-repeat center center/cover;
+    text-align: center;
+}
+
+#contact p {
+    color: white;
+}
+
+.card-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    grid-template-columns: 300px 300px 300px 300px;
+    grid-gap: 10px;
+}
+
+.card {
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    border-radius: 5px;
+    /* background: linear-gradient(180deg, rgb(43, 77, 130),rgb(40, 144, 172)); */
+    background: linear-gradient(35deg, red, purple);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+    transition: 0.5s ease;
+    cursor: pointer;
+    margin: 30px;
+}
+
+.card-image {
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+
+.card-text {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1.5em;
+}
+
+.card:hover {
+    transform: scale(1.15);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+}
+
+/* ---Catalog--- */
+#catalog {
+    height: 100vh;
+    position: relative;
+    padding-top: 40px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    background: white;
+}
+
+#catalog .container {
+    margin-top: 100px;
+}
+
+/* ---404--- */
+#not-found {
+    height: 100vh;
+    background: url("../images/kadarius-seegars.jpg") no-repeat center center/cover;
+}
+
+#not-found h1 {
+    font-family: var(--ffamily__bold);
+    font-size: var(--font__huge);
+}
+
+#not-found .btn {
+    color: white;
+    border: white 1px solid;
+}
+
+#not-found  .btn:hover {
+    background: white;
+    color: #7a451b;
+}
+
+/* ---Design Your Own--- */
+#select {
+    background: url("../images/mika-baumeister.jpg") no-repeat center center/cover;
+}
+
+#create {
+    height: 100vh;
+}
+
+#create .btn {
+    color: black;
+    border: black 1px solid;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* ==T-Shirt== */
+.drawing-area {
+    position: absolute;
+    top: 60px;
+    left: 122px;
+    z-index: 10;
+    width: 200px;
+    height: 400px;
+}
+
+.canvas-container {
+    width: 200px; 
+    height: 400px; 
+    position: relative; 
+    user-select: none;
+}
+
+#tshirt-div {
+    width: 452px;
+    height: 548px;
+    position: relative;
+    background-color: #fff;
+}
+
+#canvas {
+    position: absolute;
+    width: 200px;
+    height: 400px; 
+    left: 0px; 
+    top: 0px; 
+    user-select: none; 
+    cursor: default;
+}
+
+/* Upload Button */
+#create input[type="file"] {
+    display: none;
+}
+
+/* <select> styles */
+#create select {
+    appearance: none;
+    border: 0;
+    outline: 0;
+    font: inherit;
+
+    width: 9em;
+    height: 2em;
+    padding: 0 4em 0 1em;
+    background: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg)
+     no-repeat right 0.8em center / 1.4em,
+     linear-gradient(to left, rgba(255, 255, 255, 0.3) 3em, rgba(255, 255, 255, 0.2) 3em);
+    color: white;
+    border-radius: 0.25em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+/* <option> colors */
+#create option {
+    color: inherit;
+    background-color: var(--color__light);
+}
+
+/* Remove focus outline */
+/* &:focus {
+    outline: none;
+} */
+
+/* Remove IE arrow */
+/* &::-ms-expand {
+    display: none;
+} */

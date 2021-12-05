@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design | T-Shirt</title>
+    <link rel="stylesheet" href="styles/kathiescustoms.css">
+</head>
+
+<body>
+    <nav>
+        <a href="./index.html" id="nav-logo">
+            <div>Katie's Customs</div>
+        </a>
+
+        <ul id="nav-links">
+            <li><a href="catalog.html">Catalog</a></li>
+            <li><a href="create.html">Design Your Own</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="create">
+        <div id="tshirt-div">
+            <img id="tshirt" src="./images/tshirt.png" />
+
+            <div id="drawingArea" class="drawing-area">
+                <div class="canvas-container">
+                    <canvas id="tshirt-canvas" width="200" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <br>
+            <label for="tshirt-color">Color: </label>
+            <select id="tshirt-color">
+                <option value="#fff" selected>White</option>
+                <option value="#000">Black</option>
+                <option value="#f00">Red</option>
+                <option value="#008000">Green</option>
+                <option value="#ff0">Yellow</option>
+            </select>
+
+            <br>
+            <label for="tshirt-design" class="btn">Upload Design</label>
+            <input id="tshirt-design" type="file" />
+            <p>
+                Press the <kbd>DEL</kbd> key to remove picture
+            </p>
+        </div>
+    </section>
+
+    <script src="./scripts/fabric.min.js"></script>
+
+    <script>
+        let canvas = new fabric.Canvas('tshirt-canvas');
+
+        function updateTshirtImage(imageURL) {
+            fabric.Image.fromURL(imageURL, function (img) {
+                img.scaleToHeight(300);
+                img.scaleToWidth(300);
+                canvas.centerObject(img);
+                canvas.add(img);
+                canvas.renderAll();
+            });
+        }
+
+        document.getElementById("tshirt-color").addEventListener("change", function () {
+            document.getElementById("tshirt-div").style.backgroundColor = this.value;
+        }, false);
+
+        document.getElementById('tshirt-design').addEventListener("change", function (e) {
+            var reader = new FileReader();
+
+            reader.onload = function (event) {
+                var imgObj = new Image();
+                imgObj.src = event.target.result;
+
+                imgObj.onload = function () {
+                    var img = new fabric.Image(imgObj);
+                    img.scaleToHeight(300);
+                    img.scaleToWidth(300);
+                    canvas.centerObject(img);
+                    canvas.add(img);
+                    canvas.renderAll();
+                };
+            };
+
+            if (e.target.files[0]) {
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        }, false);
+
+        document.addEventListener("keydown", function (e) {
+            if (e.key == "Delete") {
+                canvas.remove(canvas.getActiveObject());
+            }
+        }, false);
+    </script>
+</body>
+
+</html>
