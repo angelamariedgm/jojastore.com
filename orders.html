@@ -30,31 +30,38 @@
         </nav>
     </header>
 
-    <section id="about">
-        <div class="container">
-            <div class="about-text">
-                <h1>About</h1>
+    <section id="orders">
+        <div class="">
+            <input type="text" id="order-number" name="Order #"><br>
+            <button onclick="showOrderStatus()" class="btn">Check</button>
+    
+            <div id="order-info">
                 <p>
-                    Kathie's Customs is a small customize shop located in Baltimore, MD. <br>
-                    Kathie is a mother of two and has a passion for expressing her creativity by <br>
-                    making customized items. <br><br>
-                    Kathie's Customs products range from customized shirts, mugs, <br>
-                    tumblers, and clothing accessories such as trucker hats, beanies, and earrings. <br>
-                    The store is also open for bulk orders of any of the items listed above. <br>
-                    Custom items made with love. ♥<br><br>
-                    <a href="#reviews" class="btn">Reviews</a><br>
+                    <b>Order #<div id="user-order"></div> has been received</b><br>
+                    You'll receive an email with your tracking number once your order has shipped.
                 </p>
             </div>
-        </div>
-    </section>
+    
+            <script>
+                var info = document.getElementById("order-info");
+                info.style.display = "none"
 
-    <section id="reviews">
-        <div class="elfsight-app-596aece5-3770-43fe-842c-1146b9851956"></div>
+                function showOrderStatus() {
+                    var order_number = document.getElementById("order-number").value;
+                    var msg = document.getElementById("user-order");
+                    msg.innerHTML = order_number;
+    
+                    if (info.style.display === "none") {
+                        info.style.display = "block";
+                    }
+                }
+            </script>
+        </div>
     </section>
 
     <footer>
         <div id="credits">
-            Photo by <a href="https://unsplash.com/@mbaumi" target="_blank" rel="noopener">Parker Burchfield</a>
+            Photo by <a href="https://unsplash.com/@mediamodifier">Mediamodifier</a>
         </div>
 
         <ul id="nav-social">
@@ -64,15 +71,6 @@
             <li><a href="https://etsy.com/shop/katieonlinestore25" target="_blank" rel="noopener">Etsy</a></li>
         </ul>
     </footer>
-
-    <script src="scripts/elfsight.js" defer></script>
-
-    <script
-        src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js"></script>
-
-    <script>
-        var scroll = new SmoothScroll('a[href*="#"]', { speed: 800 });
-    </script>
 
 </body>
 

@@ -6,13 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kathie's Customs | Shop</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
     <link rel="stylesheet" href="styles/kathiescustoms.css">
 </head>
 
 <body>
     <nav>
-        <a href="index.html" id="nav-logo">
-            <div>Kathie's Customs</div>
+        <a href="./index.html" id="nav-logo">
+            <img src="images/kathies-customs_logo.png" alt="Kathie's Customs">
         </a>
 
         <ul id="nav-links">
@@ -20,17 +24,120 @@
             <li><a href="create.html">Design Your Own</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><a href="orders.html">Orders</a></li>
         </ul>
     </nav>
 
     <section id="catalog">
-        <div class="container">
+        <div class="buttons">
+            <button onclick="showAll()" class="btn">All</button>
+            <button onclick="showClothing()" class="btn">Clothing</button>
+            <button onclick="showAccessories()" class="btn">Accessories</button>
+            <button onclick="showDrinkware()" class="btn">Drinkware</button>
+            <button onclick="showHomeAndBedding()" class="btn">Home & Bedding</button>
+        </div>
+
+        <!-- All -->
+        <div class="container" id="all-items">
             <div id='collection-component-1638211916207'></div>
             <script src="scripts/shopify-all.js" type="text/javascript"></script>
         </div>
+
+        <!-- Accessories -->
+        <div class="container" id="accessories">
+            <div id='collection-component-1638744350529'></div>
+            <script src="scripts/shopify-accessories.js" type="text/javascript"></script>
+        </div>
+
+        <!-- Clothing -->
+        <div class="container" id="clothing">
+            <div id='collection-component-1638744503660'></div>
+            <script src="scripts/shopify-clothing.js" type="text/javascript"></script>
+        </div>
+
+        <!-- Home & Bedding -->
+        <div class="container" id="home-bedding">
+            <div id='collection-component-1638744801305'></div>
+            <script src="scripts/shopify-home_bedding.js" type="text/javascript"></script>
+        </div>
+
+        <!-- Drinkware -->
+        <div class="container" id="drinkware">
+            <div id='collection-component-1638744744312'></div>
+            <script src="scripts/shopify-drinkware.js" type="text/javascript"></script>
+        </div>
+
     </section>
 
     <script src="scripts/scrollbar.js"></script>
+    <script>
+        var all = document.getElementById("all-items");
+        var accessories = document.getElementById("accessories");
+        var clothing = document.getElementById("clothing");
+        var home_bedding = document.getElementById("home-bedding");
+        var drinkware = document.getElementById("drinkware");
+
+        all.style.display = "block"
+        accessories.style.display = "none";
+        clothing.style.display = "none";
+        home_bedding.style.display = "none";
+        drinkware.style.display = "none";
+
+        function showAll() {
+            if (all.style.display === "none") {
+                all.style.display = "block";
+
+                accessories.style.display = "none";
+                clothing.style.display = "none";
+                home_bedding.style.display = "none";
+                drinkware.style.display = "none";
+            }
+        }
+        
+        function showAccessories() {
+            if (accessories.style.display === "none") {
+                accessories.style.display = "block";
+
+                all.style.display = "none";
+                clothing.style.display = "none";
+                home_bedding.style.display = "none";
+                drinkware.style.display = "none";
+            }
+        }
+
+        function showClothing() {
+            if (clothing.style.display === "none") {
+                clothing.style.display = "block";
+
+                all.style.display = "none";
+                accessories.style.display = "none";
+                home_bedding.style.display = "none";
+                drinkware.style.display = "none";
+            }
+        }
+
+        function showDrinkware() {
+            if (drinkware.style.display === "none") {
+                drinkware.style.display = "block";
+
+                all.style.display = "none";
+                clothing.style.display = "none";
+                home_bedding.style.display = "none";
+                accessories.style.display = "none";
+            }
+        }
+
+        function showHomeAndBedding() {
+            if (home_bedding.style.display === "none") {
+                home_bedding.style.display = "block";
+
+                all.style.display = "none";
+                clothing.style.display = "none";
+                accessories.style.display = "none";
+                drinkware.style.display = "none";
+            }
+        }
+    </script>
 </body>
 
 </html>
